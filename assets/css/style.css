@@ -25,7 +25,7 @@ footer {
 }
 
 .header {
-    max-width: 1440px;
+    max-width: 1000px;
 
     display: flex;
     padding: 0 20px;
@@ -64,4 +64,13 @@ footer {
 
 .footer p {
     text-align: right;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+}
+
+.icon image {
+    color:#FFFFFF;
 }
