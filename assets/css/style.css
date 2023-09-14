@@ -17,6 +17,10 @@
     transition: 0.5s;
 }
 
+body.lock {
+    overflow: hidden;
+}
+
 /* <--- modal ---> */
 .modal {
     position: fixed;
