@@ -71,7 +71,3 @@ function validateClientForm() {
     // If all validations pass, return true
     return true;
 }
-
-
-
-

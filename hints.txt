@@ -1,3 +1,8 @@
+Админка:
+admin_super_aa   -   212038595Ilya
+bd:
+myprojectuser    -   password
+
 # Hints for gunicorn, nginx and other
 
 
@@ -235,8 +240,5 @@ server {
 
 
 }
-
-
-
 
 
