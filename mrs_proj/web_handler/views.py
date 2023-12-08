@@ -71,6 +71,6 @@ class LoginView(View):
                 return redirect('home')  # Redirect to the home page
             else:
                 # Authentication failed
-                return render(request, 'login.html', {'error': 'Invalid login credentials'})
+                return render(request, 'login.html', {'error': 'Неправильное имя пользователя или пароль'})
         else:
             return HttpResponse(status=400)

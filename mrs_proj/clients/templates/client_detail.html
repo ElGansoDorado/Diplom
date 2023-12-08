@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>Подробные данные</h1>
+            <button id="toggle-theme">Переключить тему</button>
 
  <div class="client-details-container">
         <h2>Client Details</h2>
@@ -102,6 +103,19 @@
 </main>
 
 <script src="{% static 'scripts/clients_detail_scripts.js' %}"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', function() {
+        // Переключаем между классами "light-theme" и "dark-theme"
+        body.classList.toggle('clients_details_styles');
+        body.classList.toggle('dark-theme');
+    });
+});
+</script>
 
 </body>
 </html>

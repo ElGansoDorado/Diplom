@@ -7,7 +7,7 @@
     <title>Вход в систему</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_login.css' %}">
 </head>
 <body>
 <div class="login-box">
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="username">Имя пользователя:</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="username" name="username" required autocomplete="on">
                 <div class="input-group-append hint-button">
                     <button type="button" class="btn btn-secondary"><i class="fas fa-question-circle"></i></button>
                     <div class="hint-tooltip">Учетные данные для входа можно получить у администратора.</div>

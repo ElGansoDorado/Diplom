@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Django App{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles_base.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
-
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon/favicon-32x32.png' %}">
 </head>
 <body>
@@ -21,6 +19,8 @@
                     <a href="{% url 'client_list' %}">Все записи</a>
                     <a href="{% url 'contacts' %}">Контакты</a>
                     <a href="{% url 'dashboard' %}">Обновления</a>
+                    <a href="{% url 'logout' %}">Выход</a>
+                    {{ user.username }}
                 </nav>
             </div>
         </header>
@@ -33,7 +33,7 @@
 
         <footer class="footer">
             <div class="wrapp">
-                <p>&copy; 2023 My Django App</p>
+                <p>&copy; 2023 МРС </p>
                 <p>V0.0.1</p>
             </div>
         </footer>

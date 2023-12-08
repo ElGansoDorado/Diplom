@@ -71,7 +71,16 @@ function validateClientForm() {
     // If all validations pass, return true
     return true;
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('toggle-theme');
+    const body = document.body;
 
+    themeToggle.addEventListener('click', function() {
+        // Переключаем между классами "light-theme" и "dark-theme"
+        body.classList.toggle('clients_details_styles');
+        body.classList.toggle('dark-theme');
+    });
+});
 
 
 
