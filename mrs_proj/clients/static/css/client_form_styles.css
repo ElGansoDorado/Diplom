@@ -1,0 +1,97 @@
+.common-form {
+    /* Общие стили для формы */
+    width: 50%;
+    margin: auto;
+}
+
+.common-form input[type="text"],
+.common-form input[type="date"],
+.common-form select,
+.common-form textarea {
+    /* Общие стили для текстовых полей, даты, выпадающих списков и текстовой области */
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.common-form input[type="submit"] {
+    /* Общие стили для кнопки отправки формы */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.common-checkbox-input {
+    /* Общие стили для чекбокса, если он используется */
+    margin-right: 5px;
+}
+
+/* Стили для текста надписей в форме */
+.common-form label {
+    color: purple;
+}
+
+#editForm {
+    width: 50%;
+    margin: auto;
+}
+
+#editForm label {
+    display: block;
+    margin-bottom: 5px;
+    color: purple;  /* Фиолетовый цвет для текста меток */
+}
+
+#editForm input,
+#editForm select,
+#editForm button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#editForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addClientForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#addClientForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+#addClientForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#editForm input[type="checkbox"] {
+    margin-right: 5px;
+}
