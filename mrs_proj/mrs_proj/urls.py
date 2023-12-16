@@ -5,6 +5,8 @@ from web_handler.views import HomeView, DashboardView, ContactsView, LoginView, 
 from clients.views import ClientListView, ClientDetailView  # Import the view from the clients app
 from django.contrib.auth.views import LogoutView
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("contacts/", ContactsView.as_view(), name='contacts'),
@@ -17,3 +19,8 @@ urlpatterns = [
     # Include the 'clients' app view
     path('client-list/', ClientListView.as_view(), name='client_list'),
 ]
+
+handler400 = 'mrs_proj.views.tr_handler400'
+handler403 = 'mrs_proj.views.tr_handler403'
+handler404 = 'mrs_proj.views.tr_handler404'
+handler500 = 'mrs_proj.views.tr_handler500'

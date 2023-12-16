@@ -101,6 +101,6 @@ class ClientDetailView(LoginRequiredMixin, View):
                 form.save()
                 return redirect('client_detail', id_token=id_token)
             else:
-                return HttpResponseBadRequest("Invalid form submission")
+                return HttpResponse(status=400)
         else:
-            return HttpResponseBadRequest("Invalid action")
+            return HttpResponse(status=400)
