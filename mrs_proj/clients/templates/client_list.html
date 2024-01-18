@@ -74,23 +74,36 @@
 <div class="pagination">
     <span class="step-links">
         <div class="page_next">
-                    {% if clients.has_previous %}
-            <a href="?page=1" class="button">&laquo; first</a>
-        {% endif %}
             {% if clients.has_previous %}
-                <a href="?page={{ clients.previous_page_number }}" class="button">&#8592;</a>
+                <a href="?page=1" class="button">&laquo;</a>
             {% endif %}
 
-            <p>
-                Page {{ clients.number }} of {{ clients.paginator.num_pages }}
-            </p>
+            {% if clients.has_previous %}
+                <a href="?page={{ clients.previous_page_number }}" class="button">&lsaquo;</a>
+            {% endif %}
+            
+            <div class="page_number">
+                <p>
+                    Page {{ clients.number }} of {{ clients.paginator.num_pages }} <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </p>
+                <select name="page" class="page_list" placeholder="Страница...">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
 
             {% if clients.has_next %}
-                <a href="?page={{ clients.next_page_number }}" class="button">&#8594;</a>
+                <a href="?page={{ clients.next_page_number }}" class="button">&rsaquo;</a>
             {% endif %}
 
             {% if clients.has_next %}
-                <a href="?page={{ clients.paginator.num_pages }}" class="button">last &raquo;</a>
+                <a href="?page={{ clients.paginator.num_pages }}" class="button">&raquo;</a>
             {% endif %}
         </div>
     </span>
