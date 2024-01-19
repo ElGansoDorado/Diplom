@@ -45,8 +45,13 @@ class ClientForm(forms.ModelForm):
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'name_input'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'Имя...'}),
             'last_name': forms.TextInput(attrs={'class': 'name_input'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Фамилия...'}),
             'patronymic': forms.TextInput(attrs={'class': 'name_input'}),
+            'patronymic': forms.TextInput(attrs={'placeholder': 'Отчество...'}),
+            'age': forms.TextInput(attrs={'class': 'age_input'}),
+
             'admission_date': forms.SelectDateWidget(),
             'comorb_ccc': forms.CheckboxInput(attrs={'class': 'checkbox-input'}),
         }

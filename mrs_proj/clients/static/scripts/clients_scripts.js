@@ -1,17 +1,7 @@
-document.getElementById('toggleFormBtn').addEventListener('click', function () {
-    document.getElementById('addClientForm').style.display = 'block';
-});
-
 function toggleForm() {
     let form = document.getElementById('addClientForm');
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    form.style.display = (form.style.display === "none") ? 'block' : 'none';
 }
-
-function cancelAddClient() {
-    let form = document.getElementById('addClientForm');
-    form.style.display = 'none';
-}
-
 
 // Function to validate the client form
 function validateClientForm() {

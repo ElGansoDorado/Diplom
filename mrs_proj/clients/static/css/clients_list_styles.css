@@ -106,6 +106,7 @@
 
 .page_list
 {
+    cursor: pointer;
     opacity: 0;
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;	
@@ -125,49 +126,25 @@
     height: 50%;
 }
 
-.input_box {
-    height: 250px;
-    max-width: 1325px;
-
-    color: #FFF;
+.input_box 
+{
+    color: #C8C2AE;
     background-color: #2B4141;
 
-    padding: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 5px
+    flex-wrap: wrap;
 }
 
-.input_box input {
-    max-width: 250px;
-
-    color: #2B4141;
-    background-color: #C8C2AE;
-}
-
-.input_box label {
-    width: 300px;
-    height: 50px;
-    padding: 5px 10px;
-
-    border-bottom: 1px solid #C8C2AE;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.button_box {
+.button_box 
+{
     height: 40px;
 
     display: flex;
     justify-content: end;
 }
 
-.button_box button {
-    border-color: #000;
-}
-
-.name_input {
+.name_input 
+{
     width: 10%;
+    border-bottom: 1px solid #C8C2AE;
 }
