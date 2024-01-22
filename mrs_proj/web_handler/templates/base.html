@@ -46,9 +46,11 @@
 
         <section>
             <nav class="menu">
-                <a href="{% url 'home' %}">Главная</a>
-                <a href="{% url 'client_list' %}">Все записи</a>
-                <a href="{% url 'dashboard' %}">Обновления</a>
+                <ul>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="{% url 'client_list' %}">Все записи</a></li>
+                    <li><a href="{% url 'dashboard' %}">Обновления</a></li>
+                </ul>
             </nav>
         </section>
     </header>
