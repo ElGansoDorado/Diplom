@@ -15,30 +15,42 @@
 <body>
 <div class="wrapper">
     <header class="header">
-        <div class="wrapp">
-            <h1>MRS</h1>
-            <h2>{% block header %}{% endblock %}</h2>
+        <section>
+            <div class="header_container">
+                <img src="{% static 'img/jpg/logo.jpg' %}" alt="logo" class="logo">
+
+                <div class="contacts">
+                    <p class="phone_number">+375 (29) 000-00-00</p>
+                    <p class="email">admin@admin.com</p>
+                </div>
+
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Поиск">
+                    <button type="button" class="button" id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="user">
+                    <p class="icon"><i class="fa fa-bell" aria-hidden="true"></i></p>
+                    <p class="icon"><i class="fa fa-user" aria-hidden="true"></i></p>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <p class="user_name">{{ user.username }}</p>
+                            <p class="icon"><i class="fas fa-sign-out-alt"></i></p>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
             <nav class="menu">
-                <a href="{% url 'home' %}">
-                    <i class="fas fa-home"></i> На главную
-                </a>
-                <a href="{% url 'client_list' %}">
-                    <i class="fas fa-list"></i> Все записи
-                </a>
-                <a href="{% url 'contacts' %}">
-                    <i class="fas fa-address-book"></i> Контакты
-                </a>
-                <a href="{% url 'dashboard' %}">
-                    <i class="fas fa-chart-bar"></i> Обновления
-                </a>
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit"><i class="fas fa-sign-out-alt"></i> Выход</button>
-                </form>
-                </a>
-                <!--{{ user.username }}-->
+                <a href="{% url 'home' %}">Главная</a>
+                <a href="{% url 'client_list' %}">Все записи</a>
+                <a href="{% url 'dashboard' %}">Обновления</a>
             </nav>
-        </div>
+        </section>
     </header>
 
     <main class="main">
@@ -46,13 +58,6 @@
             {% block content %}{% endblock %}
         </div>
     </main>
-
-    <footer class="footer">
-        <div class="wrapp">
-            <p>&copy; {% now "Y" %} - {% now "H:i" %} МРС</p>
-            <p>V0.1</p>
-        </div>
-    </footer>
 </div>
 </body>
 </html>
