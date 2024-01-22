@@ -146,9 +146,18 @@
 
 /* --- MAIN --- */
 
+.main
+{
+    height: 100%;
+}
+
 .container 
 {
     max-width: 1440px;
     height: 100%;
-    margin: 0 auto;
+    margin: 34.5px auto 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }

@@ -107,3 +107,29 @@
     text-align: left;
     color: #046C7A;
 }
+
+.teg button i
+{
+    width: 16px;
+    height: 16px;
+    text-align: center;
+}
+
+/* --- PAGE --- */
+
+.page
+{
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    font: 400 12px/17px 'Apercu Pro', sans-serif; 
+    color: #9BA3AC;
+}
+
+.page span
+{
+    color: #046C7A;
+    font-family: 'Poppins';
+}
