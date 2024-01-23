@@ -100,7 +100,7 @@ body {
     content: attr(data-tooltip); /* Выводим текст */
     position: absolute; /* Абсолютное позиционирование */
     width: 300px;
-    left: -150px;
+    left: 0;
     top: 0;
     background: #FFF;
     color: #000;
