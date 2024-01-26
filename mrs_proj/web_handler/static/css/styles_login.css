@@ -186,7 +186,7 @@ body
     padding: 8px 27px;
     border-radius: 4px;
     
-    font: 400 16px/23.68px Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font: 400 16px/23.68px Arial, 'Inter', sans-serif;
     text-align: center;
 
     background-color: #046C7A;
@@ -202,7 +202,7 @@ body
 
 .error
 {
-    font: 400 14px/19.6px Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font: 400 14px/19.6px 'Inter', sans-serif;
     text-align: center;
 
     color: #ff0000;
@@ -221,7 +221,7 @@ body
 
 .footer p
 {
-    width: 310px;
+    width: 400px;
     height: 22px;
     
     font: 400 12px/22px "Roboto", sans-serif;

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block style %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/clients_list_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/clients_list_styles.css' %}">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/apercu-pro" rel="stylesheet">
 {% endblock %}
 {% block title %}Список записей{% endblock %}
 
@@ -139,35 +141,42 @@
 </section>
 
 <section class="pagination">
-    <div class="number_page">
+    <div class="pagination_left_box">
         {% if clients.has_previous %}
-        <a href="?page={{ clients.previous_page_number }}" class="arrow">&lsaquo;</a>
+            <a href="?page={{ clients.previous_page_number }}">
+                <img src="{% static 'img/svg/left.svg' %}" alt="left_arrow">
+            </a>
         {% endif %}
         
         {% if clients.has_previous %}
             <a href="?page=1" class="number">1</a>
         {% endif %}
-
-        <p class="points">...</p>
+        
+        {% if clients.has_previous %}
+        <img src="{% static 'img/svg/more-horizontal.svg' %}" alt="points" class="points">
+        {% endif %}
 
         <a href="?page=4" class="number">4</a>
         <a href="?page=5" class="number">5</a>
         <a href="?page=6" class="number">6</a>
         <a href="?page=7" class="number">7</a>
         <a href="?page=8" class="number">8</a>
-
-        <p class="points">...</p>
+        {% if clients.has_next %}
+        <img src="{% static 'img/svg/more-horizontal.svg' %}" alt="points" class="points">
+        {% endif %}
 
         {% if clients.has_next %}
             <a href="?page={{ clients.paginator.num_pages }}" class="number">{{ clients.paginator.num_pages }}</a>
         {% endif %}
 
         {% if clients.has_next %}
-            <a href="?page={{ clients.next_page_number }}" class="arrow">&rsaquo;</a>
+            <a href="?page={{ clients.next_page_number }}">
+                <img src="{% static 'img/svg/right.svg' %}" alt="right_arrow">
+            </a>
         {% endif %}
     </div>
 
-    <div class="arrow_page">
+    <div class="pagination_right_box">
         <div class="select_page_number">
             <label for="pagination" class="select_page">
                 <span>{{ clients.number }} / Page</span>
