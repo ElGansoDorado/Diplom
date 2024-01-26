@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="search">
-                    <input type="text" id="searchInput" placeholder="Поиск">
+                    <input type="text" id="headerSearch" placeholder="Поиск">
                     <button type="button" class="button" id="searchButton"><i class="fas fa-search"></i></button>
                 </div>
 
@@ -61,6 +61,8 @@
             {% block content %}{% endblock %}
         </div>
     </main>
+
+    {% block modal %}{% endblock %}
 </div>
 </body>
 </html>

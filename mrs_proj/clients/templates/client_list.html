@@ -8,7 +8,6 @@
 {% block title %}Список записей{% endblock %}
 
 {% block content %}
-
 <section class="tool">
     <div class="box_tool">
 
@@ -46,21 +45,6 @@
             </li>
         </ul>
     </div>
-</section>
-
-<section class="addwindow">
-    <form id="addClientForm" method="post" action="{% url 'client_list' %}" style="display: none;"
-    onsubmit="return validateClientForm()">
-        <div class="input_box">
-            {% csrf_token %}
-            {{ form.as_table }}
-            <input type="hidden" name="action" value="save">
-        </div>
-        <div class="button_box">
-            <button type="submit" class="button">Сохранить</button>
-        </div>
-    </form>
-
 </section>
 
 <section class="page">
@@ -264,4 +248,70 @@
 
 </script>
 
+{% endblock %}
+
+{% block modal %}
+<section id="addClientForm" class="addwindow" style="display: none;">
+    <div class="modal_window">
+        <form method="post" action="{% url 'client_list' %}" onsubmit="return validateClientForm()" class="">
+            <div class="user_info_box">
+                <div class="box">
+                    <input type="text" class="input_text" placeholder="Имя...">
+                    <input type="text" class="input_text" placeholder="Фамилия...">
+                    <input type="text" class="input_text" placeholder="Отчество...">
+                </div>
+                <div class="box">
+                    <label class="age">
+                        <span>Дата рождения: </span>
+                        <input type="date">
+                    </label>
+                    <select name="gender" id="gender" class="gender_select" placeholder="Пол...">
+                        <option value="M">Мужчина</option>
+                        <option value="W">Женщина</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="check_box">
+                <label>
+                    <input id="comorb_ccc" type="checkbox">
+                    comorb_ccc
+                </label>
+                <label>
+                    <input id="comorbidity" type="checkbox">
+                    коморбидность
+                </label>
+                <label>
+                    <input id="diabetes_or_obesity:" type="checkbox">
+                    Сахарный диабет 
+                </label>
+                <label>
+                    <input id="allergies" type="checkbox">
+                    аллергии
+                </label>
+            </div>
+        </form>
+        <!--<form method="post" action="{% url 'client_list' %}""
+    onsubmit="return validateClientForm()">
+        <div class="input_box">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <input type="hidden" name="action" value="save">
+        </div>
+        <div class="button_box">
+            <button type="submit" class="button">Сохранить</button>
+        </div>
+    </form> -->
+        <div class="button_box">
+            <button class="button" type="submit">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Сохранить
+            </button>
+            <button class="button" onclick="toggleForm()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                Отменить
+            </button>
+        </div>
+    </div>
+</section>
 {% endblock %}

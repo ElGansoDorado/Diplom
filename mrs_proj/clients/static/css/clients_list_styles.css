@@ -346,3 +346,137 @@
     letter-spacing: 0em;
     text-align: left;
 }
+
+/* --- ADDWINDOW --- */
+
+.addwindow
+{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal_window
+{
+    width: 60%;
+    height: 45%;
+
+    margin: 100px auto;
+    padding: 20px 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-radius: 10px;
+    background-color: #FFF;
+}
+
+.modal_window form
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_window .box
+{
+    min-width: 60%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_window .button_box
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    gap: 12px;
+}
+
+.modal_window .button_box .button
+{
+    width: 120px;
+    height: 38px;
+
+    padding: 7px 12px;
+
+    display: flex;
+    gap: 6px;
+
+    border-radius: 4px;
+    background-color: #046C7A;
+    color: #FFF;
+
+    font: 400 12px/22px 'Inter', sans-serif;
+    text-align: center;
+}
+
+.modal_window .button_box .button:hover
+{
+    border: 1px solid #046C7A;
+
+    background-color: #FFF;
+    color: #046C7A;
+}
+
+.user_info_box
+{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.input_text
+{
+    width: 160px;
+    height: 24px;
+}
+
+.input_text::placeholder
+{
+    font: italic 400 14px/19.6px 'Inter', sans-serif;
+    color: #9BA3AC;
+}
+
+.age span
+{
+    margin-right: 12px;
+
+    font: italic 400 14px/19.6px 'Inter', sans-serif;
+    color: #9BA3AC;
+}
+
+.input_text,
+.age,
+.gender_select
+{
+    padding: 4px 10px;
+
+    border-bottom: 1px solid #D9D1E0;
+    font: 400 16px/23.68px 'Inter', sans-serif;
+    color: #14191F;
+}
+
+.gender_select
+{
+    cursor: pointer;
+}
+
+.gender_select:focus 
+{
+    border-color: none;
+    outline: none; 
+}
+
+.check_box
+{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
