@@ -250,11 +250,6 @@
     align-items: center;
 }
 
-.pagination_left_box
-{
-
-}
-
 .pagination_left_box .number
 {
     width: 25px;
@@ -270,8 +265,7 @@
 }
 
 .pagination_left_box .number:hover,
-.pagination_left_box .number:active,
-.pagination_left_box .arrow:hover
+.pagination_left_box .number:active
 {
     border: 1px solid #046C7A;
     border-radius: 4px;
@@ -293,27 +287,12 @@
     align-items: center;
 }
 
-.pagination_left_box .arrow
-{
-    width: 28px;
-    height: 28px;
-
-    padding: 6px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-}
-
-.pagination_left_box .arrow:disabled
-{
-    color: #1A141F;
-}
-
 
 .pagination_right_box
 {
     
 }
+
 /*
 .pagination .number_page
 {
