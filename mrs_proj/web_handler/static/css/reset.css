@@ -117,3 +117,8 @@ body {
     top: 2em; /* Положение подсказки */
     z-index: 23;
 }
+
+input[type=number]::-webkit-inner-spin-button
+{
+    -webkit-appearance: none;
+}

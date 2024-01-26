@@ -287,112 +287,62 @@
     align-items: center;
 }
 
-
 .pagination_right_box
 {
-    
-}
-
-/*
-.pagination .number_page
-{
-    height: 100%;
-    
     display: flex;
-    align-items: center;
-}
-
-.number_page .number
-{
-    width: 25px;
-    height: 24px;
-
-    padding: 1px 0;
-
-    font: 400 14px/22px 'Inter', sans-serif;
-    letter-spacing: 0em;
-    text-align: center;
-
+    gap: 8px;
     color: #1A141FD9;
 }
 
-.number_page .number:hover,
-.number_page .number:active,
-.number_page .arrow:hover
+.pagination_right_box input,
+.pagination_right_box .select
 {
-    border: 1px solid #046C7A;
-    border-radius: 4px;
-    color: #046C7A;
-}
-
-.number_page .points
-{
-    letter-spacing: 1px;
-    text-align: center;
-    display: block;
-}
-
-.number_page .arrow
-{
-    width: 28px;
     height: 28px;
-
-    padding: 6px;
-    text-align: center;
-    display: block;
-}
-
-.number_page .arrow:disabled
-{
-    color: #1A141F;
-}
-
-.arrow_page
-{
-    display: flex;
-}
-
-.arrow_page .select_page_number,
-.arrow_page input
-{
     padding: 2px 8px;
 
     border: 1px solid #C2C5C8;
     border-radius: 2px;
+}
 
-    color: #1A141FD9;
+.pagination_right_box input
+{
+    width: 50px;
+}
 
+.pagination_right_box input,
+.pagination_right_box .select label
+{
+    font: 400 12px/22px 'Inter', sans-serif;
+}
+
+.pagination_right_box .select label
+{
     display: flex;
     gap: 8px;
-}
 
-.arrow_page input
+    position: relative;
+    left: 7px;
+ }
+
+.pagination_right_box .select
 {
-    width: 47px;
-    height: 28px;
-}
-
-.select_page_number
-{
-    padding: 5px 10px;
-    border: 2px solid #2B4141;
-
-    color: #C8C2AE;
-
-    text-align: center;
-    display: flex;
-
     position: relative;
 	box-shadow: 0 0 0 transparent !important;
 	padding-right: 20px !important;
 	padding-left: 5px !important;
 }
 
-.page_selector
+.pagination_right_box .page_selector
 {
     opacity: 0;
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;	
 	width: 100%;
 }
-*/
+
+.pagination_right_box label
+{
+    font: 400 14px/22px 'Roboto', sans-serif;
+    letter-spacing: 0em;
+    text-align: left;
+}

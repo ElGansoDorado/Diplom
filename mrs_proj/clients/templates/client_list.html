@@ -177,10 +177,10 @@
     </div>
 
     <div class="pagination_right_box">
-        <div class="select_page_number">
-            <label for="pagination" class="select_page">
-                <span>{{ clients.number }} / Page</span>
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
+        <div class="select">
+            <label for="pagination">
+                <span class="font">{{ clients.number }} / Page</span>
+                <img src="{% static 'img/svg/arrow-down.svg' %}" alt="arrow-down">
             </label>
             <select id="pagination" name="page" class="page_selector" placeholder="Страница...">
                 <option value="1">1</option>
@@ -195,7 +195,7 @@
         </div>
 
         <label for="goTo">Go to</label>
-        <input type="text" id="goTo">
+        <input type="number" id="goTo">
     </div>
 </section>
 
