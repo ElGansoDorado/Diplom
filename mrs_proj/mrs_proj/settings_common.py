@@ -11,6 +11,9 @@ START_ADMISSION_DATE = 2023
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# white-noise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 SECRET_KEY = config('SECRET_KEY')
 
 STATICFILES_DIRS = [
@@ -36,6 +39,7 @@ SIMPLE_HISTORY_HISTORY_ID_USE_UUID = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
