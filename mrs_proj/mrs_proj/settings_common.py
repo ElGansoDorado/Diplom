@@ -11,15 +11,18 @@ START_ADMISSION_DATE = 2023
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# white-noise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 SECRET_KEY = config('SECRET_KEY')
 
 STATICFILES_DIRS = [
     BASE_DIR / 'web_handler' / 'static',
     BASE_DIR / 'clients' / 'static',
 ]
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# white-noise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ALLOWED_HOSTS = []
 
@@ -82,7 +85,5 @@ TIME_ZONE = 'Europe/Minsk'
 USE_I18N = True
 
 USE_TZ = True
-
-STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
