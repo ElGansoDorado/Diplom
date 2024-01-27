@@ -28,7 +28,7 @@ jobs:
           echo "SECRET_KEY=$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')" >> .env
 
       - name: Change to mrs_proj directory
-        run: cd $GITHUB_WORKSPACE/mrs_proj
+        run: cd /mrs_proj
 
       - name: Collect Static
         run: python manage.py collectstatic --noinput
