@@ -30,6 +30,9 @@ jobs:
         run: pip install tox
       - name: Run tox
         run: tox -e py
+      - name: Collect Static
+        run: |
+          python manage.py collectstatic --noinput
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
