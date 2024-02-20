@@ -1,26 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block style %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/clients_list_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/clients_list_styles.css' %}">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/apercu-pro" rel="stylesheet">
 {% endblock %}
-{% block title %}Список клиентов{% endblock %}
-{% block header %}Список записей{% endblock %}
+{% block title %}Список записей{% endblock %}
 
 {% block content %}
+<section class="tool">
+    <div class="box_tool">
 
-<div class="box_tool">
-    <div class="search_box">
-        <input type="text" class="search" id="searchInput" placeholder="Поиск по ФИО">
-        <button type="button" class="button" id="searchButton"><i class="fas fa-search"></i> Поиск</button>
-        <button type="submit" class="button" id="resetSortingButton"><i class="fas fa-eraser"></i> Сброс сортировки и поиска
-        </button>
-    </div>
+        <div class="box_search">
 
-    <div class="">
-        <button id="toggleFormBtn" class="button" onclick="toggleForm()"><i class="fas fa-plus"></i> Добавить пациента
-        </button>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Поиск по ФИО">
+                <button type="button" id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <button type="submit" class="filter" id="resetSortingButton"><i class="fas fa-filter"></i></button>
+        </div>
+
+        <div>
+            <button id="toggleFormBtn" class="box_added" onclick="toggleForm()">
+                <i class="fas fa-user-plus"></i>
+                <span>Добавить пациента</span>
+            </button>
+        </div>
     </div>
-</div>
+    
+    <div class="box_tegs">
+        <ul class="list_tegs">
+            <li class="teg">
+                <button>
+                    <span>Filtered option 1</span>
+                    <i class="fas fa-times"></i>
+                </button>
+            </li>
+            <li class="teg">
+                <button>
+                    <span>Filtered option 2</span>
+                    <i class="fas fa-times"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="page">
+    <p>Showing <span>10</span> from <span>893</span> results</p>
+</section>
 
 <details>
   <summary>Фильтры</summary>
@@ -33,90 +62,137 @@
   </form>
 </details>
 
+<section class="table">
+    <table>
+        <colgroup>
+            <col style="width: 18%;"><!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
+            <col style="width: 7%;"><!-- Задаем цвет фона для следующего (одного) столбца таблицы-->
+            <col span="5" style="width: 15%;"><!-- Задаем цвет фона для следующего (одного) столбца таблицы-->
+          </colgroup>
+        <caption></caption>
+        <thead>
+            <tr class="table_header">
+                <th class="fio_width" {% if sort_by == 'personal_info__last_name' %} class="active"{% endif %}>
+                    <a href="?sort=personal_info__last_name&order={{ next_order }}">
+                        <span>Ф.И.О.</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th class="age_width" {% if sort_by == 'age' %} class="active"{% endif %}>
+                    <a href="?sort=age&order={{ next_order }}">
+                        <span>Возраст</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th class="all_width" {% if sort_by == 'body_mass_index' %} class="active"{% endif %}>
+                    <a href="?sort=body_mass_index&order={{ next_order }}">
+                        <span>ИМТ</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th class="all_width" {% if sort_by == 'spo2' %} class="active"{% endif %}>
+                    <a href="?sort=spo2&order={{ next_order }}">
+                        <span>SPO2</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th class="all_width" {% if sort_by == 'admission_date' %} class="active"{% endif %}>
+                    <a href="?sort=admission_date&order={{ next_order }}">
+                        <span>Дата Поступления</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th class="all_width" {% if sort_by == 'result' %} class="active"{% endif %}>
+                    <a href="?sort=result&order={{ next_order }}">
+                        <span>Результат</span>
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th class="all_width">Действия</th>
+            </tr>
+        </thead>
 
-
-<table>
-    <caption></caption>
-<thead>
-    <tr class="table">
-        <th {% if sort_by == 'personal_info__last_name' %} class="active"{% endif %}><a href="?sort=personal_info__last_name&order={{ next_order }}">ФИО</a></th>
-        <th {% if sort_by == 'age' %} class="active"{% endif %}><a href="?sort=age&order={{ next_order }}">Возраст</a></th>
-        <th {% if sort_by == 'body_mass_index' %} class="active"{% endif %}><a href="?sort=body_mass_index&order={{ next_order }}">ИМТ</a></th>
-        <th {% if sort_by == 'spo2' %} class="active"{% endif %}><a href="?sort=spo2&order={{ next_order }}">SPO2</a></th>
-        <th {% if sort_by == 'admission_date' %} class="active"{% endif %}><a href="?sort=admission_date&order={{ next_order }}">Дата поступления</a></th>
-        <th {% if sort_by == 'result' %} class="active"{% endif %}><a href="?sort=result&order={{ next_order }}">Результат</a></th>
-        <th>Действия</th>
-    </tr>
-</thead>
-    <tbody>
-{% if clients_data %}
-    {% for client_data in clients_data %}
-        <tr class="table">
+        <tbody>
+        {% for client in clients %}
+        <tr class="table_content">
             <td class="cell_name">
-                <a href="{{ client_data.personal_info.get_absolute_url }}">
-                    {{ client_data.personal_info }}
-                </a>
+                <div data-tooltip="{{ client }}">
+                    <p>{{ client }}</p>
+                </div>
+                <a href="{% url 'client_detail' id_token=client.id_token %}">Дополнительная информация</a>
             </td>
-            <td class="cell_age">{{ client_data.age }}</td>
-            <td class="cell_imt">{{ client_data.body_mass_index }}</td>
-            <td class="cell_spo">{{ client_data.spo2 }}</td>
-            <td class="cell_date">{{ client_data.admission_date }}</td>
-            <td class="cell_res">{{ client_data.result }}</td>
+            <td class="cell_age">{{ client.age }}</td>
+            <td class="cell_imt">{{ client.body_mass_index }}</td>
+            <td class="cell_spo">{{ client.spo2 }}</td>
+            <td class="cell_date">{{ client.admission_date }}</td>
+            <td class="cell_res">{{ client.result }}</td>
             <td class="cell_button">
-                <a href="{{ client_data.personal_info.get_absolute_url }}">
-                    <div class="button">
-                        Delete
-                    </div>
-                </a>
+                <a href="{% url 'client_detail' id_token=client.id_token %}">Удалить</a>
             </td>
         </tr>
-    {% endfor %}
-{% else %}
-    <H3>Извините, ничего не обнаружено</H3>
-{% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
 
-    </tbody>
-</table>
+<section class="pagination">
+    <div class="pagination_left_box">
+        {% if clients_data.has_previous %}
+            <a href="?{{ query_params }}&page={{ clients_data.previous_page_number }}">
+                <img src="{% static 'img/svg/left.svg' %}" alt="left_arrow">
+            </a>
+        {% endif %}
+        
+        {% if clients_data.has_previous %}
+            <a href="?{{ query_params }}&page=1" class="number">1</a>
+        {% endif %}
+        
+        {% if clients_data.has_previous %}
+        <img src="{% static 'img/svg/more-horizontal.svg' %}" alt="points" class="points">
+        {% endif %}
 
-<form id="addClientForm" method="post" action="{% url 'client_list' %}" style="display: none;"
-      onsubmit="return validateClientForm()">
-    <div class="button_box">
-        <button type="submit" class="button">Сохранить</button>
-        <button type="button" class="button" onclick="cancelAddClient()">Отменить</button>
+        <a href="?page=4" class="number">4</a>
+        <a href="?page=5" class="number">5</a>
+        <a href="?page=6" class="number">6</a>
+        <a href="?page=7" class="number">7</a>
+        <a href="?page=8" class="number">8</a>
+        {% if clients_data.has_next %}
+        <img src="{% static 'img/svg/more-horizontal.svg' %}" alt="points" class="points">
+        {% endif %}
+
+        {% if clients_data.has_next %}
+            <a href="?{{ query_params }}&page={{ clients_data.paginator.num_pages }}" class="number">{{ clients_data.paginator.num_pages }}</a>
+        {% endif %}
+
+        {% if clients_data.has_next %}
+            <a href="?page={{ clients.next_page_number }}">
+                <img src="?{{ query_params }}&page={{ clients_data.next_page_number }}" alt="right_arrow">
+            </a>
+        {% endif %}
     </div>
-    <div>
-        {% csrf_token %}
-        {{ personal_info_form.as_table }}
-    </div>
-    <div>
-        {{ client_data_form.as_table }}
-        <input type="hidden" name="action" value="save">
-    </div>
-</form>
 
-<div class="pagination">
-    <span class="step-links">
-        <div class="page_next">
-            {% if clients_data.has_previous %}
-                <a href="?{{ query_params }}&page=1" class="button">&laquo; Первая страница</a>
-            {% endif %}
-            {% if clients_data.has_previous %}
-                <a href="?{{ query_params }}&page={{ clients_data.previous_page_number }}" class="button">&#8592;</a>
-            {% endif %}
-
-            <p class="page-info" onclick="openGoToPageModal()">
-                Страница {{ clients_data.number }} / {{ clients_data.paginator.num_pages }}
-            </p>
-
-            {% if clients_data.has_next %}
-                <a href="?{{ query_params }}&page={{ clients_data.next_page_number }}" class="button">&#8594;</a>
-            {% endif %}
-            {% if clients_data.has_next %}
-                <a href="?{{ query_params }}&page={{ clients_data.paginator.num_pages }}" class="button">Последняя страница &raquo;</a>
-            {% endif %}
+    <div class="pagination_right_box">
+        <div class="select">
+            <label for="pagination">
+                <span class="font">{{ clients.number }} / Page</span>
+                <img src="{% static 'img/svg/arrow-down.svg' %}" alt="arrow-down">
+            </label>
+            <select id="pagination" name="page" class="page_selector" placeholder="Страница...">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
         </div>
-    </span>
-</div>
+
+        <label for="goTo">Go to</label>
+        <input type="number" id="goTo">
+    </div>
+</section>
 
 
 
@@ -149,4 +225,70 @@
 
 </script>
 
+{% endblock %}
+
+{% block modal %}
+<section id="addClientForm" class="addwindow" style="display: none;">
+    <div class="modal_window">
+        <form method="post" action="{% url 'client_list' %}" onsubmit="return validateClientForm()" class="">
+            <div class="user_info_box">
+                <div class="box">
+                    <input type="text" class="input_text" placeholder="Имя...">
+                    <input type="text" class="input_text" placeholder="Фамилия...">
+                    <input type="text" class="input_text" placeholder="Отчество...">
+                </div>
+                <div class="box">
+                    <label class="age">
+                        <span>Дата рождения: </span>
+                        <input type="date">
+                    </label>
+                    <select name="gender" id="gender" class="gender_select" placeholder="Пол...">
+                        <option value="M">Мужчина</option>
+                        <option value="W">Женщина</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="check_box">
+                <label>
+                    <input id="comorb_ccc" type="checkbox">
+                    comorb_ccc
+                </label>
+                <label>
+                    <input id="comorbidity" type="checkbox">
+                    коморбидность
+                </label>
+                <label>
+                    <input id="diabetes_or_obesity:" type="checkbox">
+                    Сахарный диабет 
+                </label>
+                <label>
+                    <input id="allergies" type="checkbox">
+                    аллергии
+                </label>
+            </div>
+        </form>
+        <!--<form method="post" action="{% url 'client_list' %}""
+    onsubmit="return validateClientForm()">
+        <div class="input_box">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <input type="hidden" name="action" value="save">
+        </div>
+        <div class="button_box">
+            <button type="submit" class="button">Сохранить</button>
+        </div>
+    </form> -->
+        <div class="button_box">
+            <button class="button" type="submit">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Сохранить
+            </button>
+            <button class="button" onclick="toggleForm()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                Отменить
+            </button>
+        </div>
+    </div>
+</section>
 {% endblock %}

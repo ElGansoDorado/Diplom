@@ -1,3 +1,13 @@
+/* --- TOOL --- */
+
+.tool
+{
+    width: 100%;
+    min-height: 132px;
+
+    padding: 24px 20px;
+  
+/* блок кода, который нужно проверить.*/
 /* Стили для чекбоксов */
 details input[type="checkbox"] {
   margin-right: 5px; /* Добавляем отступ справа для чекбоксов */
@@ -29,156 +39,479 @@ details input[type="checkbox"]:checked + label::before {
     margin-bottom: 30px;
 
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+
+    background-color: #046C7A0F;
 }
 
-.table {
+.tool .box_tool
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tool .box_search
+{
+    display: flex;
+    gap: 12px;
+}
+
+.tool .box_search .filter,
+.tool .box_search .search
+{
+    border: 1px solid #C2C5C8;
+    border-radius: 6px;
+
+    color: #6F7881;
+}
+
+.tool .box_search .filter
+{
+    width: 32px;
+    height: 32px;
+
+    padding: 8px;
+}
+
+.tool .box_search .search
+{
+    width: 396px;
+    height: 32px;
+
+    padding: 6px 12px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.tool .search input
+{
+    width: 100%;
+}
+
+.tool .search input::placeholder
+{
+    font: italic 400 14px/19.6px 'Inter', sans-serif;
+    color: #C2C5C8;
+}
+
+
+.tool .box_added
+{
+    width: 240px;
+    height: 40px;
+
+    padding: 8px 27px;
+    border-radius: 4px;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    font: 400 16px/24px 'Inter', sans-serif;
+    letter-spacing: 0em;
+    text-align: center;
+
+    background-color: #046C7A;
+    color: #FFF;
+}
+
+.tool .box_added:hover
+{
+    border: 1px solid #046C7A;
+    background-color: #046C7A0F;
+    color: #046C7A;
+}
+
+.tool .list_tegs
+{
+    display: flex;
+    gap: 12px;
+}
+
+.tool .list_tegs .teg
+{
+    height: 22px;
+
+    padding: 2px 8px;
+
+    border: 1px solid #046C7A;
+    border-radius: 4px;
+
+    font: 500 11px/18px 'Inter', sans-serif;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: #046C7A;
+}
+
+.teg button i
+{
+    width: 16px;
+    height: 16px;
+    text-align: center;
+}
+
+/* --- PAGE --- */
+
+.page
+{
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    font: 400 12px/17px 'Poppins', sans-serif; 
+    color: #9BA3AC;
+}
+
+.page span
+{
+    color: #046C7A;
+    font-family: 'Apercu Pro', sans-serif;
+}
+
+/* --- TABLE --- */
+.table, table, thead, tbody
+{
     width: 100%;
     border-collapse: collapse;
 }
 
-.button {
-    height: 100%;
-    padding: 5px 10px;
-    border: 2px solid #2B4141;
-
-    background-color: #2B4141;
-    font: 700 18px/120% Arial, "Helvetica Neue", Helvetica, sans-serif;
-    color: #C8C2AE;
-
-    text-align: center;
+.table_header th
+{
+    background-color: #F9F9F9;
 }
 
-.button:hover {
-    background-color: #C8C2AE;
-    color: #2B4141;
+.table_header th,
+.table_header th a
+{
+    font: 600 12px/16px 'Poppins', sans-serif;
+    letter-spacing: 4%;
+    color: #464F60;
+
+    text-align: left;
 }
 
-.search {
-    width: 250px;
-    height: 30px;
+.table_content td
+{
 
-    font: 700 18px/120% Arial, "Helvetica Neue", Helvetica, sans-serif;
-    border-bottom: 3px solid #2B4141;
+    font: 500 14px/20px 'Inter', sans-serif;
+    letter-spacing: 2%;
 }
 
-.active a {
-    color: #2B4141;
+.table_content td,
+.table_header th
+{
+    height: 40px;
+
+    padding: 12px 8px 12px 20px;
 }
 
-[class^="cell_"] {
-    border: 2px solid #2B4141;
-    text-align: center;
-}
-
-.cell_name {
-    width: 35%;
-}
-
-.cell_age {
-    width: 5%;
-}
-
-.cell_imt {
-    width: 10%;
-}
-
-.cell_spo {
-    width: 5%;
-}
-
-.cell_date {
-    width: 20%;
-}
-
-.cell_res {
-    width: 20%;
-}
-
-.cell_button {
-    width: 15%;
-
-    font: 700 18px/120% Arial, "Helvetica Neue", Helvetica, sans-serif;
-    color: #C8C2AE;
-
-    background-color: #2B4141;
-}
-
-.page_next {
+.table_header th a
+{
     display: flex;
-
-    width: 210px;
     justify-content: space-between;
 }
 
-.page_next p {
-    padding: 5px 10px;
-    border: 2px solid #2B4141;
+.table_content td
+{
+    max-height: 56px;
+    border-bottom: 1px solid #D9D1E0;
+}
 
-    background-color: #2B4141;
-    font: 700 18px/120% Arial, "Helvetica Neue", Helvetica, sans-serif;
-    color: #C8C2AE;
+.cell_name p
+{
+    width: 100%;
 
+    font: 500 14px/20px 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    text-align: left;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    color: #171C26;
+}
+
+.cell_name a
+{
+    font: 400 10px/18px 'Inter', sans-serif;
+    letter-spacing: 0.03em;
+    text-align: left;
+
+    color: #687182; 
+}
+
+.cell_button a
+{
+    width: 185.5px;
+    height: 32px;
+
+    padding: 8px;
+
+    border: 1px solid #046C7A;
+    border-radius: 4px;
+
+    font: 400 11px/16.28px 'Inter', sans-serif;
+    color: #046C7A;
     text-align: center;
 }
 
-.add_form {
-    display: none;
+/* --- PAGINATION --- */
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-
-    max-width: 1335px;
-    height: 50%;
-}
-
-.input_box {
-    height: 250px;
-    max-width: 1325px;
-
-    color: #FFF;
-    background-color: #2B4141;
-
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px
-}
-
-.input_box input {
-    max-width: 250px;
-
-    color: #2B4141;
-    background-color: #C8C2AE;
-}
-
-.input_box label {
-    width: 300px;
-    height: 50px;
-    padding: 5px 10px;
-
-    border-bottom: 1px solid #C8C2AE;
+.pagination
+{
+    width: 100%;
+    min-height: 52px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.button_box {
-    height: 40px;
+.pagination_left_box,
+.pagination_right_box
+{
+    display: flex;
+    align-items: center;
+}
+
+.pagination_left_box .number
+{
+    width: 25px;
+    height: 24px;
+
+    padding: 1px 0;
+
+    font: 400 14px/22px 'Inter', sans-serif;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #1A141FD9;
+}
+
+.pagination_left_box .number:hover,
+.pagination_left_box .number:active
+{
+    border: 1px solid #046C7A;
+    border-radius: 4px;
+    color: #046C7A;
+}
+
+.pagination_left_box .points
+{
+    width: 28px;
+    height: 28px;
+
+    padding: 7px;
+
+    letter-spacing: 1px;
+    text-align: center;
+    vertical-align: middle;
 
     display: flex;
-    justify-content: end;
+    align-items: center;
 }
 
-.button_box button {
-    border-color: #000;
+.pagination_right_box
+{
+    display: flex;
+    gap: 8px;
+    color: #1A141FD9;
 }
 
+.pagination_right_box input,
+.pagination_right_box .select
+{
+    height: 28px;
+    padding: 2px 8px;
+
+    border: 1px solid #C2C5C8;
+    border-radius: 2px;
+}
+
+.pagination_right_box input
+{
+    width: 50px;
+}
+
+.pagination_right_box input,
+.pagination_right_box .select label
+{
+    font: 400 12px/22px 'Inter', sans-serif;
+}
+
+.pagination_right_box .select label
+{
+    display: flex;
+    gap: 8px;
+
+    position: relative;
+    left: 7px;
+ }
+
+.pagination_right_box .select
+{
+    position: relative;
+	box-shadow: 0 0 0 transparent !important;
+	padding-right: 20px !important;
+	padding-left: 5px !important;
+}
+
+.pagination_right_box .page_selector
+{
+    opacity: 0;
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;	
+	width: 100%;
+}
+
+.pagination_right_box label
+{
+    font: 400 14px/22px 'Roboto', sans-serif;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+/* --- ADDWINDOW --- */
+
+.addwindow
+{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal_window
+{
+    width: 60%;
+    height: 45%;
+
+    margin: 100px auto;
+    padding: 20px 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-radius: 10px;
+    background-color: #FFF;
+}
+
+.modal_window form
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_window .box
+{
+    min-width: 60%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_window .button_box
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    gap: 12px;
+}
+
+.modal_window .button_box .button
+{
+    width: 120px;
+    height: 38px;
+
+    padding: 7px 12px;
+
+    display: flex;
+    gap: 6px;
+
+    border-radius: 4px;
+    background-color: #046C7A;
+    color: #FFF;
+
+    font: 400 12px/22px 'Inter', sans-serif;
+    text-align: center;
+}
+
+.modal_window .button_box .button:hover
+{
+    border: 1px solid #046C7A;
+
+    background-color: #FFF;
+    color: #046C7A;
+}
+
+.user_info_box
+{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.input_text
+{
+    width: 160px;
+    height: 24px;
+}
+
+.input_text::placeholder
+{
+    font: italic 400 14px/19.6px 'Inter', sans-serif;
+    color: #9BA3AC;
+}
+
+.age span
+{
+    margin-right: 12px;
+
+    font: italic 400 14px/19.6px 'Inter', sans-serif;
+    color: #9BA3AC;
+}
+
+.input_text,
+.age,
+.gender_select
+{
+    padding: 4px 10px;
+
+    border-bottom: 1px solid #D9D1E0;
+    font: 400 16px/23.68px 'Inter', sans-serif;
+    color: #14191F;
+}
+
+.gender_select
+{
+    cursor: pointer;
+}
+
+.gender_select:focus 
+{
+    border-color: none;
+    outline: none; 
+}
+
+.check_box
+{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  
+  /* код который ещё нужно будет проверить. */
 .name_input {
     width: 10%;
 }

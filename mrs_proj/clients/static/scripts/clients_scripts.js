@@ -19,7 +19,7 @@ document.getElementById('toggleFormBtn').addEventListener('click', function () {
 
 function toggleForm() {
     let form = document.getElementById('addClientForm');
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    form.style.display = (form.style.display === "none") ? 'block' : 'none';
 }
 
 function cancelAddClient() {
