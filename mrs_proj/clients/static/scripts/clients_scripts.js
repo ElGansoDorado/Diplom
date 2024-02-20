@@ -1,58 +1,80 @@
+document.getElementById('toggleFormBtn').addEventListener('click', function () {
+    document.getElementById('addClientForm').style.display = 'block';
+});
+
+ document.addEventListener('DOMContentLoaded', function () {
+        const searchButton = document.getElementById('searchButton');
+
+        searchButton.addEventListener('click', function () {
+            const searchInput = document.getElementById('searchInput');
+            const searchQuery = searchInput.value.trim();  // Trim to remove leading/trailing spaces
+
+            if (searchQuery !== '') {
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', searchQuery);
+                window.location.href = currentUrl.toString();
+            }
+        });
+    });
+
 function toggleForm() {
     let form = document.getElementById('addClientForm');
     form.style.display = (form.style.display === "none") ? 'block' : 'none';
 }
 
-// Function to validate the client form
-function validateClientForm() {
-    // Get form inputs
-    let firstName = $('#id_first_name').val().trim();
-    let lastName = $('#id_last_name').val().trim();
-    let patronymic = $('#id_patronymic').val().trim();
-    let age = $('#id_age').val().trim();
-    let bodyMassIndex = $('#id_body_mass_index').val().trim();
-    let SPO2 = $('#id_SPO2').val().trim();
-
-    // Validate first name
-    if (!firstName) {
-        alert('Please enter a valid first name.');
-        return false;
-    }
-
-    // Validate last name
-    if (!lastName) {
-        alert('Please enter a valid last name.');
-        return false;
-    }
-
-    // Validate patronymic
-    if (!patronymic) {
-        alert('Please enter a valid patronymic.');
-        return false;
-    }
-
-    // Validate age (should be a positive integer)
-    if (!age || isNaN(age) || parseInt(age) < 0) {
-        alert('Please enter a valid age.');
-        return false;
-    }
-
-    // Validate body mass index (should be a positive number)
-    if (!bodyMassIndex || isNaN(bodyMassIndex) || parseFloat(bodyMassIndex) < 0) {
-        alert('Please enter a valid body mass index.');
-        return false;
-    }
-
-    // Validate SPO2 (should be a number between 0 and 100)
-    if (!SPO2 || isNaN(SPO2) || parseFloat(SPO2) < 0 || parseFloat(SPO2) > 100) {
-        alert('Please enter a valid SPO2 value between 0 and 100.');
-        return false;
-    }
-
-    // If all validations pass, return true
-    return true;
+function cancelAddClient() {
+    let form = document.getElementById('addClientForm');
+    form.style.display = 'none';
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const resetSortingButton = document.getElementById('resetSortingButton');
+
+    resetSortingButton.addEventListener('click', function () {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete('sort');  // Remove the 'sort' parameter
+        currentUrl.searchParams.delete('search');  // Remove the 'search' parameter
+        window.location.href = currentUrl.toString();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInput');
+
+    // Event listener to enlarge the input field when typing
+    searchInput.addEventListener('input', function () {
+        if (searchInput.value.trim() !== '') {
+            searchInput.classList.add('enlarged');
+        } else {
+            searchInput.classList.remove('enlarged');
+        }
+    });
+
+    const resetSortingButton = document.getElementById('resetSortingButton');
+
+    resetSortingButton.addEventListener('click', function () {
+        const currentUrl = new URL(window.location.href);
+        const searchParamIndex = currentUrl.href.indexOf('?search');
+
+        if (searchParamIndex !== -1) {
+            const baseUrl = currentUrl.href.substring(0, searchParamIndex);
+            window.location.href = baseUrl;
+        }
+    });
+});
 
 
+function openGoToPageModal() {
+    document.getElementById('goToPageModal').style.display = 'block';
+}
 
+function closeGoToPageModal() {
+    document.getElementById('goToPageModal').style.display = 'none';
+}
+
+window.onclick = function (event) {
+    let modal = document.getElementById('goToPageModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};

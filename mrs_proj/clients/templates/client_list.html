@@ -51,6 +51,17 @@
     <p>Showing <span>10</span> from <span>893</span> results</p>
 </section>
 
+<details>
+  <summary>Фильтры</summary>
+  <form method="get">
+    <label><input type="checkbox" name="result_0"> Результат 0</label><br>
+    <label><input type="checkbox" name="result_1"> Результат 1</label><br>
+    <label><input type="checkbox" name="result_2"> Результат 2</label><br>
+    <label><input type="checkbox" name="result_3"> Результат 3</label><br>
+    <button type="submit">Применить фильтры</button>
+  </form>
+</details>
+
 <section class="table">
     <table>
         <colgroup>
@@ -61,8 +72,8 @@
         <caption></caption>
         <thead>
             <tr class="table_header">
-                <th class="fio_width" {% if sort_by == 'last_name' %} class="active"{% endif %}>
-                    <a href="?sort=last_name&order={{ next_order }}">
+                <th class="fio_width" {% if sort_by == 'personal_info__last_name' %} class="active"{% endif %}>
+                    <a href="?sort=personal_info__last_name&order={{ next_order }}">
                         <span>Ф.И.О.</span>
                         <i class="fa fa-sort" aria-hidden="true"></i>
                     </a>
@@ -126,17 +137,17 @@
 
 <section class="pagination">
     <div class="pagination_left_box">
-        {% if clients.has_previous %}
-            <a href="?page={{ clients.previous_page_number }}">
+        {% if clients_data.has_previous %}
+            <a href="?{{ query_params }}&page={{ clients_data.previous_page_number }}">
                 <img src="{% static 'img/svg/left.svg' %}" alt="left_arrow">
             </a>
         {% endif %}
         
-        {% if clients.has_previous %}
-            <a href="?page=1" class="number">1</a>
+        {% if clients_data.has_previous %}
+            <a href="?{{ query_params }}&page=1" class="number">1</a>
         {% endif %}
         
-        {% if clients.has_previous %}
+        {% if clients_data.has_previous %}
         <img src="{% static 'img/svg/more-horizontal.svg' %}" alt="points" class="points">
         {% endif %}
 
@@ -145,17 +156,17 @@
         <a href="?page=6" class="number">6</a>
         <a href="?page=7" class="number">7</a>
         <a href="?page=8" class="number">8</a>
-        {% if clients.has_next %}
+        {% if clients_data.has_next %}
         <img src="{% static 'img/svg/more-horizontal.svg' %}" alt="points" class="points">
         {% endif %}
 
-        {% if clients.has_next %}
-            <a href="?page={{ clients.paginator.num_pages }}" class="number">{{ clients.paginator.num_pages }}</a>
+        {% if clients_data.has_next %}
+            <a href="?{{ query_params }}&page={{ clients_data.paginator.num_pages }}" class="number">{{ clients_data.paginator.num_pages }}</a>
         {% endif %}
 
-        {% if clients.has_next %}
+        {% if clients_data.has_next %}
             <a href="?page={{ clients.next_page_number }}">
-                <img src="{% static 'img/svg/right.svg' %}" alt="right_arrow">
+                <img src="?{{ query_params }}&page={{ clients_data.next_page_number }}" alt="right_arrow">
             </a>
         {% endif %}
     </div>
@@ -184,67 +195,33 @@
 </section>
 
 
+
+
+<!-- Модальное окно для ввода номера страницы -->
+<div id="goToPageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeGoToPageModal()">&times;</span>
+        <form id="goToPageForm">
+            <label for="page-input">К странице номер:</label>
+            <input type="number" id="page-input" min="1" max="{{ clients_data.paginator.num_pages }}">
+            <button type="button" onclick="goToPage()">Перейти</button>
+        </form>
+    </div>
+</div>
+
 <script src="{% static 'scripts/clients_scripts.js' %}"></script>
+
 <script>
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const searchButton = document.getElementById('searchButton');
-
-        searchButton.addEventListener('click', function () {
-            const searchInput = document.getElementById('searchInput');
-            const searchQuery = searchInput.value.trim();  // Trim to remove leading/trailing spaces
-
-            if (searchQuery !== '') {
-                const currentUrl = new URL(window.location.href);
-                currentUrl.searchParams.set('search', searchQuery);
-                window.location.href = currentUrl.toString();
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const resetSortingButton = document.getElementById('resetSortingButton');
-
-        resetSortingButton.addEventListener('click', function () {
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.delete('sort');  // Remove the 'sort' parameter
-            window.location.href = currentUrl.toString();
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const resetSortingButton = document.getElementById('resetSortingButton');
-
-        resetSortingButton.addEventListener('click', function () {
-            const currentUrl = new URL(window.location.href);
-            const searchParamIndex = currentUrl.href.indexOf('?search');
-
-            if (searchParamIndex !== -1) {
-                const baseUrl = currentUrl.href.substring(0, searchParamIndex);
-                window.location.href = baseUrl;
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-
-        // Event listener to enlarge the input field when typing
-        searchInput.addEventListener('input', function () {
-            if (searchInput.value.trim() !== '') {
-                searchInput.classList.add('enlarged');
-            } else {
-                searchInput.classList.remove('enlarged');
-            }
-        });
-
-        // Event listener for the search button click
-        searchButton.addEventListener('click', function () {
-            // Perform the search functionality here
-            alert('Searching for: ' + searchInput.value);
-        });
-    });
+    function goToPage() {
+        var pageNumber = document.getElementById('page-input').value;
+        if (pageNumber !== '' && !isNaN(pageNumber) && pageNumber > 0 && pageNumber <= {{ clients_data.paginator.num_pages }}) {
+            window.location.href = '?page=' + pageNumber;
+            closeGoToPageModal();
+        } else {
+            alert('Please enter a valid page number.');
+        }
+    }
 
 </script>
 

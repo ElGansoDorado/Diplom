@@ -6,6 +6,12 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
+---
+
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ElGansoDorado_Diplom&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ElGansoDorado_Diplom)
 
 ## Оглавление(ссылки)
 
@@ -21,6 +27,7 @@
 - [Работа с файлами](#работа-с-файлами)
 - [Шаблонизатор](#шаблонитизатор)
 - [Гайд по тестам](#тесты)
+- [Docker](#docker)
 
 ---
 
@@ -73,20 +80,31 @@ python manage.py populate_data 40
 
 _Будет создано 40 новых записей_
 
-#### Пересброс token_id
+#### Сохранение файла с данными бд локально
 
-Команда на случай если будет проблема с id token(проблемы мало вероятны, однако полезно при тесте)
+Команда для выгрузки данных из базы.
 
-_Переделает для всех записей в бд:_
+Принимает следующие аргументы:
+
+--all - взять всё
+--format для выбора формата файла, есть:
+* json
+* excel
+* csv
+* xml
+<br>
+чтобы взять всё:
+
+--all <br>
+чтобы взять выборочно: (список id)
 
 ```cmd
-python manage.py regenerate_tokens --all
+python manage.py download_client_data --format json --all
 ```
-
-_Переделает для отправленных id(можно списком):_
+или так:
 
 ```cmd
-python manage.py regenerate_tokens <id>
+python manage.py download_client_data --format excel fb8e1387-6019-4b99-af9e-fcfd87e24aee
 ```
 
 ---
@@ -383,6 +401,33 @@ tox
 
 При PR SonarCloud будет запускать тесты у себя. Так что если что-то будет не так, то
 ошибки смотрим на Github.
+
+---
+
+## Docker
+
+Сделал настройки для сбора приложения в докер-контейнер. Там сразу все настройки.
+Nginx и Gunicorn. Версия приложения собирается последняя стабильная. Естественно нужен установленный docker в системе.
+
+```cmd
+docker build -t mrs_proj:latest .  #собрать контейнер
+docker save -o mrs_proj_image.tar mrs_proj:latest # экспорт Docker-образа и перенос на другую машину
+```
+
+Перенесите файл mrs_proj_image.tar на другую машину.
+
+```cmd
+docker load -i mrs_proj_image.tar # импортируйте Docker-образ на другой машине
+```
+Запустить контейнер
+
+```cmd
+docker run -p 8000:8000 mrs_proj:latest gunicorn mrs_proj.wsgi:application
+```
+Замените 8000:8000 на необходимые вам порты, и убедитесь, что ваши Django-настройки (например, ALLOWED_HOSTS)<br>
+и настройки Gunicorn соответствуют вашему окружению.<br>
+Теперь ваш Django проект должен быть доступен на порту 8000 внутри контейнера.
+
 
 ---
 

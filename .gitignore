@@ -2,9 +2,14 @@
 __pycache__/
 *.py[cod]
 
+# добавил пока сюда миграции, чтобы не складировать их на гит
+migrations/
+
 # Python virtual environment
 venv/
 .venv/
+
+staticfiles/
 
 # IDE specific files
 .idea/
