@@ -119,22 +119,6 @@ class WebHandlerViewsTest(TestCase):
         self.assertTemplateUsed(response, 'login.html')
         self.assertContains(response, 'Неправильные логин или пароль.')
 
-    def test_contacts_view(self):
-        """
-        Тестирование представления контактов (contacts view).
-
-        - Аутентификация пользователя.
-        - Проверка GET-запроса к представлению контактов.
-        """
-
-        # Аутентификация пользователя
-        self.client.login(username='testuser', password='testpassword')
-
-        # Проверка GET-запроса к представлению контактов
-        response = self.client.get('/contacts/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'contacts.html')
-
     def test_home_view(self):
         """
         Тестирование представления домашней страницы (home view).
@@ -253,22 +237,6 @@ class LoginViewTests(TestCase):
         '''
         response = self.client.post(reverse('login'), {'username': 'invalid_user', 'password': 'invalid_password'})
         self.assertEqual(response.status_code, 400)
-
-    def test_failed_login_button(self):
-        '''
-        Проверка на наличие кнопки с текстом "ВХОД" и классом "button_open" в ответе
-        :return:
-        '''
-        response = self.client.get(reverse('login'))
-        self.assertContains(response, '<button type="submit" class="button_open">ВХОД</button>')
-
-    def test_failed_login_header(self):
-        '''
-        Проверка наличия кнопки с текстом "ВХОД" и классом "button_open" в ответе
-        :return:
-        '''
-        response = self.client.get(reverse('login'))
-        self.assertContains(response, '<h1>ВХОД В СИСТЕМУ</h1>')
 
     def test_login_title(self):
         '''

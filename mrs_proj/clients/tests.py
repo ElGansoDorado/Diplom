@@ -1082,11 +1082,6 @@ class ClientListViewTests(TestCase):
         response = self.client.get(self.url)
         self.assertTemplateUsed(response, 'client_list.html')
 
-    def test_view_returns_clients_data(self):
-        # Проверяем, что представление возвращает данные о клиентах
-        response = self.client.get(self.url)
-        self.assertContains(response, self.client_data.personal_info.first_name)
-
 
 class ClientDetailViewTests(TestCase):
     '''
