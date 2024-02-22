@@ -9,6 +9,14 @@ class ResultAPI(APIView):
 
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    # For Debugging
+    def initial(self, request, *args, **kwargs):
+        # Perform any pre-authentication checks here
+        # print(f"API: {request.COOKIES}")
+        
+        # If the pre-authentication checks pass, continue with the default initialization
+        return super().initial(request, *args, **kwargs)
+
     def get(self, request, format=None):
         return Response(status=status.HTTP_200_OK)
 
